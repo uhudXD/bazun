@@ -25,6 +25,10 @@ const fontMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://bazun.vercel.app"),
 
+  verification: {
+    google: "mhqW4_C1IVgJbsUGMswL-zTEI0qp7g5FzFxKU95PTaM",
+  },
+
   title: {
     default: "Service HP Cikarang Barat | Bazun Service",
     template: "%s | Bazun Service",

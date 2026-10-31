@@ -52,7 +52,7 @@ const services = [
 export function Services() {
     return (
         <section
-            id="layanan"
+            id="services"
             className="px-4 py-20 sm:px-6 sm:py-28 lg:py-36"
         >
             <div className="mx-auto max-w-7xl">

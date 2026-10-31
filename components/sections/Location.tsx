@@ -13,7 +13,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export function Location() {
     return (
         <section
-            id="lokasi"
+            id="location"
             className="px-4 py-20 sm:px-6 sm:py-28 lg:py-32"
         >
             <div className="mx-auto max-w-7xl">

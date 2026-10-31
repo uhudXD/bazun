@@ -62,7 +62,7 @@ const advantages = [
 export function WhyUs() {
     return (
         <section
-            id="keunggulan"
+            id="why-us"
             className="px-4 py-20 sm:px-6 sm:py-28 lg:py-32"
         >
             <div className="mx-auto max-w-7xl">
