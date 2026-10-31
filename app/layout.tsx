@@ -6,6 +6,7 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 import { Navbar } from "@/components/Navbar"
 import { Footer } from "@/components/Footer"
+import { JsonLd } from "@/components/JsonLd"
 
 const montserratHeading = Montserrat({
   subsets: ["latin"],
@@ -107,6 +108,7 @@ export default function RootLayout({
       )}
     >
       <body>
+        <JsonLd />
         <Navbar />
         {children}
         <Footer />
