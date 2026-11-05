@@ -1,25 +1,32 @@
-
 export function JsonLd() {
     const jsonLd = {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
+        "@type": "LocalBusiness",
         "@id": "https://bazun.vercel.app/#business",
         name: "Bazun Service",
-        url: "https://bazun.vercel.app",
-        image: "https://bazun.vercel.app/images/hero-banner.webp",
+        url: "https://bazun.vercel.app/",
+        image: "https://bazun.vercel.app/images/social.webp",
         telephone: "+6281382000575",
         description:
-            "Bazun Service melayani penggantian LCD, baterai, konektor charger, dan komponen HP di Cikarang Barat, Kabupaten Bekasi.",
+            "Bazun Service melayani service HP di Cibitung dan sekitarnya, termasuk Cikarang Barat, serta perbaikan laptop dan komputer.",
         address: {
             "@type": "PostalAddress",
+            streetAddress: "Jl. Telaga Asih, RT.06/RW.02, Telaga Asih",
             addressLocality: "Cikarang Barat",
-            addressRegion: "Jawa Barat",
+            addressRegion: "Kabupaten Bekasi, Jawa Barat",
+            postalCode: "17841",
             addressCountry: "ID",
         },
-        areaServed: {
-            "@type": "Place",
-            name: "Cikarang Barat, Kabupaten Bekasi",
-        },
+        areaServed: [
+            {
+                "@type": "Place",
+                name: "Cibitung, Kabupaten Bekasi",
+            },
+            {
+                "@type": "Place",
+                name: "Cikarang Barat, Kabupaten Bekasi",
+            },
+        ],
         openingHoursSpecification: {
             "@type": "OpeningHoursSpecification",
             dayOfWeek: [
@@ -34,12 +41,18 @@ export function JsonLd() {
             opens: "09:00",
             closes: "22:00",
         },
-        priceRange: "Rp50.000 ke atas",
         currenciesAccepted: "IDR",
         hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: "Layanan Bazun Service",
             itemListElement: [
+                {
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: "Service HP",
+                    },
+                },
                 {
                     "@type": "Offer",
                     itemOffered: {
@@ -58,14 +71,21 @@ export function JsonLd() {
                     "@type": "Offer",
                     itemOffered: {
                         "@type": "Service",
-                        name: "Penggantian Konektor Charger",
+                        name: "Perbaikan Konektor Charger",
                     },
                 },
                 {
                     "@type": "Offer",
                     itemOffered: {
                         "@type": "Service",
-                        name: "Penggantian Komponen Mesin HP",
+                        name: "Service Laptop",
+                    },
+                },
+                {
+                    "@type": "Offer",
+                    itemOffered: {
+                        "@type": "Service",
+                        name: "Service Komputer",
                     },
                 },
             ],

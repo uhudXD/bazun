@@ -1,118 +1,126 @@
 
 import type { Metadata } from "next"
-import { Geist_Mono, Roboto, Montserrat } from "next/font/google"
+import { Roboto, Montserrat } from "next/font/google"
 
 import "./globals.css"
 import { cn } from "@/lib/utils"
-import { Navbar } from "@/components/Navbar"
-import { Footer } from "@/components/Footer"
 import { JsonLd } from "@/components/JsonLd"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
 const montserratHeading = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-heading",
+    subsets: ["latin"],
+    variable: "--font-heading",
 })
 
 const roboto = Roboto({
-  subsets: ["latin"],
-  variable: "--font-sans",
+    subsets: ["latin"],
+    variable: "--font-sans",
 })
 
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
+const siteUrl = "https://bazun.vercel.app/"
+
+const siteTitle = "Service HP Cibitung | Bazun Service"
+
+const siteDescription =
+    "Bazun Service melayani service HP di Cibitung dan Cikarang Barat. Perbaikan LCD, baterai, konektor charger, laptop, dan komputer. Biaya jasa pasang mulai Rp50.000."
+
+const socialImage = "/images/social.webp"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bazun.vercel.app"),
+    metadataBase: new URL(siteUrl),
 
-  verification: {
-    google: "mhqW4_C1IVgJbsUGMswL-zTEI0qp7g5FzFxKU95PTaM",
-  },
-
-  title: {
-    default: "Service HP Cikarang Barat | Bazun Service",
-    template: "%s | Bazun Service",
-  },
-
-  description:
-    "Bazun Service melayani service HP di Cikarang Barat dan sekitarnya. Penggantian LCD, baterai, konektor charger, dan komponen HP dengan biaya jasa pasang mulai Rp50.000.",
-
-  authors: [
-    {
-      name: "Bazun Service",
+    verification: {
+        google: "mhqW4_C1IVgJbsUGMswL-zTEI0qp7g5FzFxKU95PTaM",
     },
-  ],
 
-  creator: "Bazun Service",
-  publisher: "Bazun Service",
+    title: siteTitle,
+    description: siteDescription,
 
-  alternates: {
-    canonical: "/",
-  },
-
-  openGraph: {
-    title: "Service HP Cikarang Barat | Bazun Service",
-    description:
-      "Butuh service HP di Cikarang Barat? Bazun Service melayani penggantian LCD, baterai, konektor charger, dan pemasangan sparepart mulai Rp50.000.",
-    url: "https://bazun.vercel.app/",
-    siteName: "Bazun Service",
-    locale: "id_ID",
-    type: "website",
-    images: [
-      {
-        url: "/images/hero-banner.webp",
-        width: 1329,
-        height: 748,
-        alt: "Bazun Service - Layanan Service HP Cikarang Barat",
-      },
+    keywords: [
+        "service HP Cibitung",
+        "tempat service HP Cibitung",
+        "tukang service HP Cibitung",
+        "service LCD HP Cibitung",
+        "service laptop Cibitung",
+        "service komputer Cibitung",
+        "service HP Cikarang Barat",
     ],
-  },
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Service HP Cikarang Barat | Bazun Service",
-    description:
-      "Layanan penggantian komponen dan pemasangan sparepart HP di Cikarang Barat. Biaya jasa mulai Rp50.000.",
-    images: ["/images/hero-banner.webp"],
-  },
+    authors: [
+        {
+            name: "Bazun Service",
+        },
+    ],
 
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+    creator: "Bazun Service",
+    publisher: "Bazun Service",
+
+    alternates: {
+        canonical: "/",
     },
-  },
+
+    openGraph: {
+        title: siteTitle,
+        description: siteDescription,
+        url: siteUrl,
+        siteName: "Bazun Service",
+        locale: "id_ID",
+        type: "website",
+        images: [
+            {
+                url: socialImage,
+                width: 1536,
+                height: 1024,
+                alt: "Bazun Service - Layanan Service HP Cibitung",
+            },
+        ],
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: siteTitle,
+        description: siteDescription,
+        images: [socialImage],
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+        },
+    },
 }
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode
+    children: React.ReactNode
 }>) {
-  return (
-    <html
-      lang="id"
-      suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        roboto.variable,
-        montserratHeading.variable,
-      )}
-    >
-      <body>
-        <JsonLd />
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
-  )
+    return (
+        <html
+            lang="id"
+            suppressHydrationWarning
+            className={cn(
+                "antialiased",
+                "font-sans",
+                roboto.variable,
+                montserratHeading.variable,
+            )}
+        >
+            <body>
+                <JsonLd />
+                <Navbar />
+
+                {children}
+
+                <Footer />
+            </body>
+        </html>
+    )
 }

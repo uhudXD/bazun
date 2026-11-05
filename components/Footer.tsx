@@ -1,87 +1,137 @@
-import Link from "next/link"
-import { MapPin, Phone } from "lucide-react"
+"use client";
 
-export function Footer() {
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  MapPin,
+  Clock,
+  MessageCircle,
+  Smartphone,
+  Laptop,
+  Monitor,
+} from "lucide-react";
+
+import { Separator } from "@/components/ui/separator";
+
+const navigation = [
+  { label: "Beranda", href: "#beranda" },
+  { label: "Layanan", href: "#layanan" },
+  { label: "Keunggulan", href: "#keunggulan" },
+  { label: "Proses", href: "#proses" },
+  { label: "Lokasi", href: "#lokasi" },
+];
+
+const services = [
+  { label: "Service HP Cibitung", icon: Smartphone },
+  { label: "Service Laptop", icon: Laptop },
+  { label: "Service Komputer", icon: Monitor },
+];
+
+export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-3">
+    <footer className="border-t bg-muted/40">
+      <div className="container mx-auto px-6">
+        <div className="grid gap-12 py-14 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
+          {/* Brand */}
           <div>
             <Link
-              href="/#home"
-              className="text-2xl font-bold tracking-tight"
+              href="#beranda"
+              className="inline-flex items-center gap-2 text-xl font-bold tracking-tight"
             >
               Bazun Service
+              <ArrowUpRight className="size-4 text-muted-foreground" />
             </Link>
 
-            <p className="mt-4 max-w-sm text-sm leading-6 opacity-80">
-              Service HP, laptop, dan komputer di Cikarang
-              Barat dan Cibitung.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Solusi service HP di Cibitung untuk berbagai kebutuhan
+              perbaikan smartphone, laptop, dan komputer. Melayani pelanggan
+              di Cibitung, Cikarang Barat, dan sekitarnya.
             </p>
           </div>
 
+          {/* Navigation */}
           <div>
-            <h2 className="font-semibold">
-              Navigasi
-            </h2>
+            <h2 className="font-semibold">Navigasi</h2>
 
-            <nav className="mt-4 flex flex-col gap-3 text-sm opacity-80">
-              <Link href="/#home">
-                Beranda
-              </Link>
-
-              <Link href="/#services">
-                Layanan
-              </Link>
-
-              <Link href="/#why-us">
-                Kenapa Kami
-              </Link>
-
-              <Link href="/#location">
-                Lokasi
-              </Link>
-            </nav>
+            <ul className="mt-5 space-y-3">
+              {navigation.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
+          {/* Services */}
           <div>
-            <h2 className="font-semibold">
-              Hubungi Kami
-            </h2>
+            <h2 className="font-semibold">Layanan</h2>
 
-            <div className="mt-4 flex flex-col gap-4 text-sm opacity-80">
+            <ul className="mt-5 space-y-3">
+              {services.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <li key={item.label}>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Icon className="size-4" />
+                      {item.label}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h2 className="font-semibold">Hubungi Kami</h2>
+
+            <div className="mt-5 space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 size-4 shrink-0" />
-
-                <address className="not-italic leading-6">
-                  Jl. Telaga Asih, RT.06/RW.02,
-                  <br />
-                  Telaga Asih, Kec. Cikarang Bar.,
-                  <br />
-                  Kabupaten Bekasi, Jawa Barat 17841
+                <MapPin className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                <address className="text-sm leading-relaxed text-muted-foreground not-italic">
+                  Jl. Telaga Asih, RT.06/RW.02, Telaga Asih, Kec. Cikarang
+                  Barat, Kabupaten Bekasi, Jawa Barat 17841
                 </address>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Clock className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">
+                  Setiap hari, 09.00 – 22.00 WIB
+                </p>
               </div>
 
               <a
                 href="https://wa.me/6281382000575"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3"
+                className="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-muted-foreground"
               >
-                <Phone className="size-4 shrink-0" />
-                <span>+62 813-8200-0575</span>
+                <MessageCircle className="size-4" />
+                +62 813-8200-0575
+                <ArrowUpRight className="size-3" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-16 border-t border-primary-foreground/20 pt-6">
-          <p className="text-sm opacity-70">
-            © {new Date().getFullYear()} Bazun Service.
-            All rights reserved.
+        <Separator />
+
+        {/* Copyright */}
+        <div className="flex flex-col gap-3 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} Bazun Service. All rights reserved.
           </p>
+
+          <p>Service HP, Laptop & Komputer</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
